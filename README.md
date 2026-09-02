@@ -9,7 +9,7 @@
 ![python](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)
 ![tests](https://img.shields.io/badge/tests-27%20passing-brightgreen)
 ![deps](https://img.shields.io/badge/runtime%20dependencies-0-yellowgreen)
-[![CI](https://github.com/<owner>/resilient-fetcher/actions/workflows/ci.yml/badge.svg)](https://github.com/<owner>/resilient-fetcher/actions)
+![CI](https://img.shields.io/badge/CI-GitHub%20Actions-informational)
 
 ## Why a wheel reinvention?
 
