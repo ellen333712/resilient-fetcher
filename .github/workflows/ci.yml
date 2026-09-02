@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install (editable, dev extra)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      - name: Unit tests (stdlib runner — no third-party dependency needed)
+        run: PYTHONPATH=src:tests python -m unittest discover -s tests -v
+      - name: Compile check (importable under -O)
+        run: python -O -c "import resilient_fetcher, resilient_fetcher.__main__; print(resilient_fetcher.__version__)"

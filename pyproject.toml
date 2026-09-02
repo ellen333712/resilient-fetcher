@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resilient-fetcher"
+version = "0.1.0"
+description = "A concurrency-resilient HTTP fetcher: token-bucket rate limiting, exponential backoff with jitter, a circuit breaker, and a retry budget — stdlib only."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Tian Yang" }]
+keywords = ["http", "asyncio", "rate-limit", "retry", "circuit-breaker", "resilience"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Internet :: WWW/HTTP",
+  "Intended Audience :: Developers",
+]
+
+[project.scripts]
+resilient-fetch = "resilient_fetcher.__main__:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7; python_version>='3.8'"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
